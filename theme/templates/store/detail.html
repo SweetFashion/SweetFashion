@@ -1,0 +1,457 @@
+{% extends "../base.html" %}
+{% load embed_video_tags %}
+{% load social_share %}
+{% load static %}
+{% block title %}SweetFashion.se | {{post.title}}{% endblock %}
+{% block content %}
+<head> 
+    <meta charset="UTF-8"> 
+    <link rel="image_src" href="{{post.image1.url}}"/> 
+    <meta name="title" content="{{post.title}}" />
+    <meta name="description" content="Sweet Fashion | Your Smile Matters" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>  
+ 
+<style>
+    
+    main {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+        margin: 5px;
+        cursor: pointer;
+    }
+    button img {
+        width: 100%;
+        object-fit: contain;
+        padding: 0;
+    }
+    .carousel-box {
+        width: 100%;
+        height: 100%;
+
+    }
+    .carousel-wrapper {
+        display: flex;
+    }
+
+    .carousel {
+        display: flex;
+    }
+
+    .carousel-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    @media screen and (max-width: 499px) {
+        .carousel-box {
+            width: 100%;
+            height: 100%;
+        }
+    }
+</style>
+  
+<div class="flex justify-center">
+<section class="pb-2 lg:w-11/12 ">
+    <div class="container mx-auto px-2">  
+        <div class="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 items-center">
+
+            <div class="items-center p-2 pb-1">               
+                <div class="text-base font-sans font-semibold flex gap-2 overflow-hidden">
+                    <a class="hover:text-blue-600" href="/">Home</a>/
+                    <a class="hover:text-blue-600" href="{% url 'product:category_filter' post.category.slug %}">{{post.category|safe}}</a>/
+                    <a class="hover:text-blue-600" href="{% url 'product:subcategory_filter' post.subcategory.slug %}">{{post.subcategory|safe}}</a>  
+                </div> 
+            </div>
+ 
+        </div>
+
+        <div class="lg:col-gap-10 xl:col-gap-10 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 md:gap-3 lg:gap-6">
+            <div class="lg:col-span-2 lg:row-end-1 inline-block py-2 ">
+                <main class="carousel-container">
+                    <section class="carousel-wrapper">
+                        <aside class="buttons">
+                            <div class="carousel-btn btn1 shadow-sm rounded">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1">
+                                    <img src="{{post.image1.url}}" class="d-block w-100" alt="...">
+                                </button>
+                            </div>
+                            {% if post.image2 %}
+                            <div class="carousel-btn btn2 shadow-sm rounded">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 2" class="">
+                                    <img src="{{post.image2.url}}" class="d-block w-100" alt="...">
+                                </button>
+                            </div>
+                            {% endif %}
+                            {% if post.image3 %}
+                            <div class="carousel-btn btn3  shadow-sm rounded">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                    aria-label="Slide 3">
+                                    <img src="{{post.image3.url}}" class="d-block w-100" alt="...">
+                                </button>
+                            </div>
+                            {% endif %}
+                            {% if post.image4 %}
+                            <div class="carousel-btn btn4 shadow-sm rounded">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                    aria-label="Slide 4">
+                                    <img src="{{post.image4.url}}" class="d-block w-100" alt="...">
+                                </button>
+                            </div>
+                            {% endif %}
+                            {% if post.image5 %}
+                            <div class="carousel-btn btn5 shadow-sm rounded">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                                    aria-label="Slide 5">
+                                    <img src="{{post.image5.url}}" class="d-block w-100" alt="...">
+                                </button>
+                            </div> 
+                            {% endif %}
+                        </aside>
+                        <aside class="carousel relative" id="carouselExampleIndicators"
+                            class="carousel slide carousel-wrapper d-flex flex-row" data-bs-ride="carousel">
+                            <section class="carousel-inner">
+                                <div class="bg-white relative carousel-box box1 carousel-item active shadow-sm rounded-lg">
+                                    <img src="{{post.image1.url}}" class="d-block rounded-lg " alt="...">  
+                                </div>
+                                {% if post.image2 %}
+                                <div class="bg-white relative carousel-box box2 carousel-item shadow-sm rounded-lg">
+                                    <img src="{{post.image2.url}}" class="d-block rounded-lg" alt="...">  
+                                </div>
+                                {% endif %} 
+                                {% if post.image3 %}
+                                <div class="bg-white relative carousel-box box3 carousel-item shadow-sm rounded-lg">   
+                                    <img src="{{post.image3.url}}" class="d-block rounded-lg" alt="...">
+                                </div>
+                                {% endif %} 
+                                {% if post.image4 %}
+                                <div class="bg-white relative carousel-box box4 carousel-item shadow-sm rounded-lg">
+                                    <img src="{{post.image4.url}}" class="d-block rounded-lg" alt="...">
+                                </div>
+                                {% endif %}  
+                                {% if post.image5 %}
+                                <div class="bg-white relative carousel-box box5 carousel-item shadow-sm rounded-lg"> 
+                                    <img src="{{post.image5.url}}" class="d-block rounded-lg" alt="...">  
+                                </div>
+                                {% endif %}
+                            </section>
+                        </aside>
+                    </section>
+                </main>
+                    {% if post.video %}
+                    <div class="border p-2 mt-2 rounded border-slate-300">
+                        <div class="flex justify-center">
+                            <video width="640" height="480" controls>
+                                <source src="{{post.video.url}}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    {% endif %}
+                   
+            </div>
+
+
+            {#<!-------------Product Details Start----------------->#}
+            <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2 font-semibold cursor-default font-sans"> 
+                
+                <a class="view" href="{% url 'product:brand_filter' post.brand.slug %}">
+                    Brand: {{post.brand|safe}}
+                </a> 
+                 
+                          
+                <div class="text-2xl px-2">
+                    {{post.title|safe}}
+                </div>
+                
+                    <div class="flex gap-2 px-2">
+                        <div class="font-bold text-gray-700 dark:text-gray-300">Sku:</div>
+                        <div class="copy-link">
+                            <input value={{post.sku|safe}} type="button"
+                                class="copy-link-input px-0.5 w-14 overflow-hidden rounded-md border text-start"
+                                readonly />
+                            <button class="copy-link-button">
+                                <svg class="w-4 h-5 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 8v3c0 .6-.4 1-1 1H5m11 4h2c.6 0 1-.4 1-1V5c0-.6-.4-1-1-1h-7a1 1 0 0 0-1 1v1m4 3v10c0 .6-.4 1-1 1H6a1 1 0 0 1-1-1v-7.1c0-.3 0-.5.2-.7l2.5-2.9c.2-.2.5-.3.8-.3H13c.6 0 1 .4 1 1Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex items-center">
+                            {% if post.on_stock %} 
+                                <div class="text-sm font-sans bg-gradient-to-l text-white from-emerald-600 via-green-600  to-green-600 px-1.5 p-0.5 rounded-md ">
+                                    In Stock
+                                </div> 
+                            {% else %} 
+                                <div class="text-sm font-sans bg-gradient-to-l text-white from-rose-600 via-red-600  to-red-600 px-1.5 p-0.5 rounded-md ">
+                                    Out Of Stock
+                                </div> 
+                            {% endif %} 
+                         
+                        </div>
+                    </div>
+            
+
+
+
+
+
+
+
+ 
+ 
+         
+            
+
+
+
+{#<!-------------Button Start----------------->#}
+<div class="lg:col-span-1 lg:row-span-2 lg:row-end-2 font-semibold cursor-default">
+    <div class="p-1 border rounded-lg my-2">
+        <div class="flex justify-center  mb-2 ">
+    
+    <div class="grid grid-cols-2 gap-2">
+            <a class="btn" href="https://www.facebook.com/messages/t/119424834597078" target="_blank">
+                CHAT NOW
+            </a>
+            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                SHARE
+            </button>
+            <div class="dropdown-menu dropdown-menu-end ">
+                <div class='items-center flex mx-3'>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                            viewBox="0,0,256,256">
+                            <g fill="#0029ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                style="mix-blend-mode: normal">
+                                <g transform="scale(5.12,5.12)">
+                                    <path
+                                        d="M25,3c-12.15,0 -22,9.85 -22,22c0,11.03 8.125,20.137 18.712,21.728v-15.897h-5.443v-5.783h5.443v-3.848c0,-6.371 3.104,-9.168 8.399,-9.168c2.536,0 3.877,0.188 4.512,0.274v5.048h-3.612c-2.248,0 -3.033,2.131 -3.033,4.533v3.161h6.588l-0.894,5.783h-5.694v15.944c10.738,-1.457 19.022,-10.638 19.022,-21.775c0,-12.15 -9.85,-22 -22,-22z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class='fb'>
+                        {% post_to_facebook object_or_url "Facebook" %}
+                    </div>
+                </div>
+    
+                <div class='items-center flex mx-3'>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50">
+                            <path
+                                d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div
+                        class='tw'>
+                        {% post_to_twitter "Sweet Fashion Product: {{post.title}}. Check it out!" post.get_absolute_url "Twitter" %}
+                    </div>
+                </div>
+                <div class='items-center flex mx-3'>
+                    <div class="px-0.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            width="26" height="26" viewBox="0 0 256 256" xml:space="preserve">
+                            <defs>
+                            </defs>
+                            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                                transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                <path
+                                    d="M 84.261 79.141 H 5.628 c -3.049 0 -5.617 -2.487 -5.617 -5.617 V 16.716 c 0 -3.049 2.487 -5.617 5.617 -5.617 h 78.633 c 3.049 0 5.617 2.487 5.617 5.617 v 56.808 C 89.878 76.654 87.391 79.141 84.261 79.141 L 84.261 79.141 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(227,227,227); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <polygon points="11.24,79.14 44.87,52.18 45.1,50.66 11.24,25.7 "
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(208,208,208); fill-rule: nonzero; opacity: 1;"
+                                    transform="  matrix(1 0 0 1 0 0) " />
+                                <polygon points="80.8,79.15 59.85,79.14 11.24,29.82 11.24,25.7 45.1,50.66 80.28,25.34 "
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(187,187,187); fill-rule: nonzero; opacity: 1;"
+                                    transform="  matrix(1 0 0 1 0 0) " />
+                                <polygon points="44.87,52.18 45.1,50.66 11.24,25.7 11.24,29.82 38.4,57.37 "
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(179,179,179); fill-rule: nonzero; opacity: 1;"
+                                    transform="  matrix(1 0 0 1 0 0) " />
+                                <path
+                                    d="M 5.628 79.141 c -3.129 0 -5.617 -2.487 -5.617 -5.617 V 16.636 c 0 -3.129 2.487 -3.691 5.617 -3.691 s 5.617 0.642 5.617 3.691 v 62.505 H 5.628 L 5.628 79.141 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(213,75,61); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <path
+                                    d="M 5.628 13.747 c 4.012 0 4.814 1.204 4.814 2.889 v 61.703 H 5.628 c -2.648 0 -4.814 -2.166 -4.814 -4.814 V 16.636 C 0.814 14.871 1.617 13.747 5.628 13.747 L 5.628 13.747 z M 5.628 12.945 c -3.129 0 -5.617 0.642 -5.617 3.691 v 56.889 c 0 3.129 2.487 5.617 5.617 5.617 h 5.617 V 16.636 C 11.245 13.507 8.758 12.945 5.628 12.945 L 5.628 12.945 L 5.628 12.945 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(215,43,39); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <path
+                                    d="M 84.261 79.141 h -5.617 V 16.476 c 0 -3.129 2.487 -3.53 5.617 -3.53 c 3.129 0 5.617 0.401 5.617 3.53 v 57.129 C 89.878 76.654 87.391 79.141 84.261 79.141 L 84.261 79.141 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(213,75,61); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <path
+                                    d="M 84.261 13.747 c 3.611 0 4.814 0.722 4.814 2.728 v 57.129 c 0 2.648 -2.166 4.814 -4.814 4.814 h -4.814 V 16.476 C 79.447 14.389 80.651 13.747 84.261 13.747 L 84.261 13.747 z M 84.261 12.945 c -3.129 0 -5.617 0.401 -5.617 3.53 v 62.746 h 5.617 c 3.129 0 5.617 -2.487 5.617 -5.617 V 16.476 C 89.878 13.346 87.391 12.945 84.261 12.945 L 84.261 12.945 L 84.261 12.945 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(215,43,39); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <path
+                                    d="M 44.865 52.101 L 2.419 21.29 c -2.487 -1.845 -3.21 -5.376 -1.364 -7.863 s 5.456 -3.049 8.024 -1.204 L 44.945 38.3 l 36.107 -26.398 c 2.487 -1.845 6.018 -1.284 7.863 1.284 c 1.845 2.487 1.284 6.018 -1.284 7.863 L 44.865 52.101 L 44.865 52.101 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(213,75,61); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <path
+                                    d="M 84.261 11.581 L 84.261 11.581 c 1.525 0 2.969 0.722 3.932 2.006 c 1.525 2.166 1.043 5.135 -1.043 6.74 L 44.865 51.138 L 2.9 20.648 c -2.166 -1.605 -2.728 -4.654 -1.204 -6.74 c 0.883 -1.204 2.407 -2.006 4.012 -2.006 c 1.043 0 2.086 0.321 2.889 0.963 l 35.786 25.997 l 0.481 0.321 l 0.481 -0.321 l 36.027 -26.398 C 82.255 11.902 83.218 11.581 84.261 11.581 L 84.261 11.581 z M 84.261 10.779 c -1.123 0 -2.327 0.321 -3.29 1.043 L 44.865 38.22 L 8.998 12.143 C 8.036 11.421 6.832 11.1 5.628 11.1 c -1.765 0 -3.53 0.802 -4.654 2.327 c -1.765 2.487 -1.043 6.018 1.444 7.863 l 42.446 30.892 l 42.686 -31.132 c 2.487 -1.845 3.049 -5.296 1.284 -7.863 C 87.712 11.581 86.027 10.779 84.261 10.779 L 84.261 10.779 L 84.261 10.779 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(215,43,39); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div
+                        class='fb'>
+                        {% send_email object.title "Sweet Fashion Product: {{post.title}}. Check it out!" post.get_absolute_url "Email" %}
+                    </div>
+                </div>
+                <div class='items-center flex mx-3'>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                            viewBox="0,0,256,256">
+                            <g fill="#ff0000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                style="mix-blend-mode: normal">
+                                <g transform="scale(5.12,5.12)">
+                                    <path
+                                        d="M25,2c-12.68213,0 -23,10.31787 -23,23c0,9.88416 6.26758,18.33026 15.03638,21.57697c-0.25256,-2.25159 -0.21295,-5.93903 0.2038,-7.72437c0.39026,-1.677 2.52124,-10.68713 2.52124,-10.68713c0,0 -0.64331,-1.28833 -0.64331,-3.1911c0,-2.99017 1.73242,-5.22119 3.88983,-5.22119c1.83496,0 2.71979,1.37762 2.71979,3.0282c0,1.8457 -1.17346,4.60266 -1.78125,7.15784c-0.5069,2.14093 1.07336,3.88654 3.18365,3.88654c3.82123,0 6.75848,-4.0296 6.75848,-9.84534c0,-5.14758 -3.698,-8.74719 -8.97955,-8.74719c-6.11676,0 -9.70728,4.58856 -9.70728,9.33099c0,1.84735 0.71118,3.82867 1.6001,4.90698c0.17529,0.21332 0.20093,0.39941 0.14886,0.61603c-0.1629,0.67889 -0.52509,2.13928 -0.59705,2.4386c-0.09344,0.39447 -0.31177,0.47632 -0.71863,0.28693c-2.68579,-1.25031 -4.3645,-5.17566 -4.3645,-8.32959c0,-6.78156 4.92682,-13.0108 14.20654,-13.0108c7.45886,0 13.25476,5.31384 13.25476,12.41791c0,7.41003 -4.67291,13.37299 -11.15686,13.37299c-2.17889,0 -4.22638,-1.13202 -4.92676,-2.46918c0,0 -1.07831,4.10486 -1.34045,5.11121c-0.45245,1.74042 -2.38928,5.34601 -3.36157,6.9837c2.22424,0.71851 4.59357,1.11102 7.05377,1.11102c12.68262,0 23,-10.31738 23,-23c0,-12.68213 -10.31738,-23 -23,-23z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class='pt'>
+                        {% add_pinterest_script %}
+                        {% save_to_pinterest%}
+                    </div>
+                </div>
+                <div class='items-center flex mx-3'>
+                    <div class="pr-1.5">
+                        <svg class="h-7 w-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                                d="M9 8v3c0 .6-.4 1-1 1H5m11 4h2c.6 0 1-.4 1-1V5c0-.6-.4-1-1-1h-7a1 1 0 0 0-1 1v1m4 3v10c0 .6-.4 1-1 1H6a1 1 0 0 1-1-1v-7.1c0-.3 0-.5.2-.7l2.5-2.9c.2-.2.5-.3.8-.3H13c.6 0 1 .4 1 1Z" />
+                        </svg>
+                    </div>
+                    <div class='cy'>
+                        {% copy_to_clipboard object_or_url "Copy Link!" %}
+                        {% add_copy_script %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="link-title">
+            Once you click CHAT NOW you will be redirected to Sweet Fashion Messenger.
+        </div>
+    </div>
+ 
+
+
+
+
+
+        {% if description %} 
+        {% for detail in description %} 
+            
+                <div class="detail-title" >
+                    {{detail.title|safe}}
+                </div>
+                <div class="detail-content"> 
+                    {{detail.content|safe}}
+                </div> 
+            
+        {% endfor %}
+        {% endif %}
+
+ 
+                
+            </div>
+        </div>
+    </div>
+    {#<!-------------Product Details End----------------->#}     
+</section>
+</div>
+
+
+{#<!-------------Related Start----------------->#}
+<div class=" ">
+    <div class="flex items-center">
+        <div class="font-bold py-2 pl-4 text-lg ">
+            Related Product
+        </div>
+        <div>
+            <a href="{% url 'product:category_filter' post.category.slug %}" class="view">view more</a>
+        </div>
+    </div>
+</div>
+<div class="">
+    <div class='grid grid-cols-2 lg:grid-cols-6 2xl:grid-cols-8 gap-2 sm:grid-cols-4 p-2 '>
+        {% for post in related %}
+        <a href="{{post.get_absolute_url}}"
+            class="bg-white overflow-hidden  max-w-sm">
+            <div class="relative ">
+                <img loading="lazy" class="w-full" src="{{post.thumbnail.url}}" alt="{{ post.title }}" />
+                <div class="ribbon"><span>{{post.quality|safe}}</span></div>
+                {% if post.sale %} 
+                <div class="sale">
+                    SALE
+                </div>
+                {% endif %}
+            </div>
+            <div>
+                {% if post.bestoffer %} 
+                  <div class="freeship">
+                    • BEST OFFER •
+                  </div>
+                {% endif %}
+            </div>
+            <div class="py-1">
+                <div class="product-text">
+                    {{post.title|safe}}
+                  </div>
+            </div>
+        </a>
+        {% empty %}
+        <div class='font-semibold my-20 items-center flex pl-4 justify-center'>
+            <div class="text border-2 rounded-lg px-2 p-1 bg-white text-xs justify-center">
+                NO RELATED PRODUCT AVAILABLE
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{#<!-------------Related End----------------->#}
+<script>
+    document.querySelectorAll(".copy-link").forEach((copyLinkParent) => {
+        const inputField = copyLinkParent.querySelector(".copy-link-input");
+        const copyButton = copyLinkParent.querySelector(".copy-link-button");
+        const text = inputField.value;
+        inputField.addEventListener("focus", () => inputField.select());
+        copyButton.addEventListener("click", () => {
+            inputField.select();
+            navigator.clipboard.writeText(text);
+            inputField.value = "copied!";
+            setTimeout(() => (inputField.value = text), 2000);
+        });
+    });      
+ 
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+    
+    myModal.addEventListener('shown.bs.modal', () => {
+      myInput.focus()
+    })
+</script>
+{% endblock %}

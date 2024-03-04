@@ -1,0 +1,35 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load social_share %}
+ 
+{% block title %}
+SweetFashion | Your Smile Matters
+{% endblock %}
+
+
+{% block content %}
+ 
+{% include "base/header.html" %}
+<div class="flex items-center">
+   <div class="font-bold py-2 pl-4 text-lg">
+       New Featured
+   </div> 
+   <div>
+       <a href="{% url 'product:featured_view' %}" class="view">view more</a>
+   </div>
+</div>
+{% include "store/section/featured.html" %}
+{% include "store/section/category.html" %}
+{% include "store/section/brand.html" %}
+{% include "store/section/product.html" %}
+ 
+
+</div>
+ 
+ 
+
+
+ 
+{% endblock %}
+
+ 

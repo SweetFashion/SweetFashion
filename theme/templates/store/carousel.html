@@ -1,0 +1,47 @@
+{% block content %}
+{% load static %}
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Swiper -->
+  <div class="swiper4 mySwiper4 relative">
+    <div class="swiper-wrapper">
+      {% for carousel in carousel %}
+      <div class="swiper-slide"  >
+      <a href="{{carousel.link|safe}}" target="_blank">
+        <img src="{{carousel.thumbnail.url}}" class="w-full" alt="...">
+      </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper4 = new Swiper(".mySwiper4",{
+      rewind : true,
+      cssMode: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      mousewheel: true,
+      keyboard: true,
+    });
+  </script>
+
+
+
+{% endblock %} 
+
+
+ 

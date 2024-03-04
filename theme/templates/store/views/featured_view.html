@@ -1,0 +1,58 @@
+{% extends "../../base.html" %}
+{% load static %}
+{% block content %} 
+ 
+<div>
+   
+        <div class="flex items-center justify-center">
+            <div class="font-bold py-2 pl-4 text-lg ">
+                Discover New Featured
+            </div>
+        </div>
+  
+    <div class="">
+        <div class="px-2 pt-1 w-8/10 ">
+            <div class='grid grid-cols-2 lg:grid-cols-6 2xl:grid-cols-8 gap-2 sm:grid-cols-5 p-2'>
+                {% for featured_view in featured_view %}
+            <div class=" ">
+                <a href="{{featured_view.get_absolute_url}}" class="bg-white overflow-hidden max-w-sm">
+                    <div class="relative overflow-hidden">
+                        <img class="" src="{{featured_view.thumbnail.url}}" alt="{{featured_view.title }}" />
+                        <div class="ribbon"><span>{{featured_view.quality|safe}}</span></div>
+                        {% if featured_view.sale %} 
+                            <div class="sale">
+                                SALE
+                            </div>
+                        {% endif %}
+                        </div>
+                          
+                        <div>
+                            {% if featured_view.bestoffer %} 
+                              <div class="freeship">
+                                • BEST OFFER •
+                              </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="py-1 px-0.5">
+                            <div class="product-text">
+                                {{featured_view.title|safe}}
+                              </div>
+                        </div>
+                </a>
+            </div>
+            {% empty %}
+                <div class='font-semibold my-20 items-center flex pl-4 justify-center'>
+                    <div class="text border-2 rounded-lg px-2 p-1 bg-white text-xs justify-center">
+
+                        NO [{{featured_view.name}}] AVAILABLE
+
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+ 
+{% endblock %}

@@ -1,0 +1,98 @@
+ 
+{% block content %}
+
+{% load static %}
+ 
+  <style>
+      
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+  
+<div class=""> 
+        <div class="flex items-center">
+            <div class="font-bold py-2 pl-4 text-lg">
+              Best Categories
+            </div> 
+            <div>
+                <a href="{% url 'product:category_view' %}" class="view">view more</a>
+            </div>
+        </div>
+  <div class="swipers mySwipers px-2 overflow-hidden">
+    <div class="swiper-wrapper ">
+        {% for category in category %}
+        <div class="swiper-slide bg-white ">
+                <a href="{% url 'product:category_filter' category.slug %}" class=''>
+                    <div class="border-2 rounded-full overflow-hidden">
+                      <img loading="lazy w-32 h-32  " src="{{category.thumbnail.url}}" />
+                    </div>
+
+                    <div class="px-2 font-sans hovertext font-semibold text-base text-slate-900"> 
+                      {{category.name}}     
+                    </div> 
+                </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swipers = new Swiper(".mySwipers", {
+      rewind: true,
+      slidesPerView: 2,
+      spaceBetween: 8,
+       
+      breakpoints: {
+        640: {
+          slidesPerView: 4,
+          spaceBetween: 8,
+        },
+        768: {
+          slidesPerView: 5,
+          spaceBetween: 8,
+        },
+        1024: {
+          slidesPerView: 7,
+          spaceBetween: 8,
+        },
+        1440: {
+            slidesPerView: 10,
+            spaceBetween: 8,
+          },
+        2560: {
+            slidesPerView: 12,
+            spaceBetween: 8,
+          },
+      },
+    });
+  </script>
+ 
+
+</html>
+
+   
+{% endblock %} 
+ 
+ 

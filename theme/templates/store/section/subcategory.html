@@ -1,0 +1,86 @@
+ 
+{% block content %}
+
+{% load static %}
+ 
+  <style>
+      
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+ 
+  
+  <div class="swipers mySwipers67 px-2 overflow-hidden">
+    <div class="swiper-wrapper ">
+        {% for subcategory in subcategory %}
+        <div class="swiper-slide bg-white">
+                <a href="{% url 'product:subcategory_filter' subcategory.slug %}" class=''>
+                    <div class=" ">
+                        <img loading="lazy" class='' src="{{subcategory.thumbnail.url}}" />
+                    </div>
+                    <div class="grid-cols-1 grid">
+                        <div class="catname">{{subcategory.name}}</div>     
+                    </div>
+                </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swipers = new Swiper(".mySwipers67", {
+      rewind: true,
+      slidesPerView: 2,
+      spaceBetween: 8,
+       
+      breakpoints: {
+        640: {
+          slidesPerView: 4,
+          spaceBetween: 8,
+        },
+        768: {
+          slidesPerView: 5,
+          spaceBetween: 8,
+        },
+        1024: {
+          slidesPerView: 7,
+          spaceBetween: 8,
+        },
+        1440: {
+            slidesPerView: 10,
+            spaceBetween: 8,
+          },
+        2560: {
+            slidesPerView: 12,
+            spaceBetween: 8,
+          },
+      },
+    });
+  </script>
+ 
+
+</html>
+
+   
+{% endblock %} 

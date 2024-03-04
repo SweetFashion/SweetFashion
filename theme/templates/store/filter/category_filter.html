@@ -1,0 +1,55 @@
+{% extends "../../base.html" %}
+{% block content %}
+
+{% load static %}
+
+<div>
+   
+  <div class="">  
+    <div class="h-32">
+      <img class="object-cover object-top w-full h-28 lg:h-36" src="{% static "category.png"%}" alt='Golden Cover From Marstoon'>
+    </div>
+    {% if category.thumbnail %}
+    <div class="mx-auto w-36 h-36 relative lg:-mt-16 -mt-24 border-2 border-yellow-500 rounded-full overflow-hidden">
+      <img class="" src="{{category.thumbnail.url}}" alt=''>
+    </div>
+    {% else %}
+    <div class="mx-auto w-36 h-36 relative lg:-mt-16 -mt-24 border-2 border-yellow-500 rounded-full overflow-hidden bg-white">
+      <svg class="absolute w-36 h-36 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+    </div>
+   {% endif %}
+   <div class="text-center font-sans px-2 font-bold">
+    <span class=" ">{{category.name|safe}}</span>
+    </div>
+  </div>
+ 
+
+<div class="pb-2">
+  <div class="text-base font-semibold font-sans pl-4">
+     {{category.name|safe}} Categories  
+  </div>
+  {% include "store/plainfilter/subcategoryplain.html" %}
+</div>
+
+
+
+<div>
+  <div class="text-base font-semibold font-sans pl-4 ">
+    {{category.name|safe}} Featured<a class="view" href="{% url 'product:featured_view' %}">view more</a>
+  </div>
+  {% include "store/plainfilter/featuredplain.html" %}
+</div>
+ 
+<div>
+  <div class="text-base font-semibold font-sans pl-4 ">
+    Just For You
+  </div>
+  {% include "store/plainfilter/postplain.html" %}
+</div>
+
+ 
+
+</div>
+
+ 
+{% endblock %}

@@ -1,0 +1,72 @@
+{% block content %}
+{% load static %}
+<style> 
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+  
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+
+<div>
+    <div class="px-2 py-1 w-8/10 ">
+        <div class='grid lg:grid-cols-1 grid-cols-1 gap-0 '>
+            <div class='grid grid-cols-2 lg:grid-cols-6 2xl:grid-cols-8 sm:grid-cols-4 overflow-x-auto overflow-hidden gap-2'>
+                {% for post in product %}
+                <a href="{{post.get_absolute_url}}" class="bg-white overflow-hidden max-w-sm ">
+                    <div class="relative">
+                        <img class="w-full" src="{{post.thumbnail.url}}" alt="{{ post.title|safe }}" />
+                        <div class="ribbon"><span>{{post.quality|safe}}</span></div>
+                        {% if post.sale %} 
+                            <div class="sale">
+                                SALE
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                      {% if post.bestoffer %} 
+                      <div class="freeship">
+                        • BEST OFFER •
+                      </div>
+                    {% endif %}
+                    </div>
+
+
+                    <div class="py-1 px-0.5">
+                        <div class="product-text">
+                            {{post.title|safe}}
+                        </div>  
+                    </div> 
+                </a>
+                {% empty %}
+                <div class='font-semibold my-20 items-center flex pl-4 justify-center'>
+                    <div class="text border-2 rounded-lg px-2 p-1 bg-white text-xs justify-center">
+                        NO [Items] AVAILABLE
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
+</div>
+
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+ 
+{% endblock %}

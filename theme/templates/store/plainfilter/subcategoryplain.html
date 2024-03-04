@@ -1,0 +1,25 @@
+{% block content %}
+{% load static %}
+<div class="flex whitespace-nowrap overflow-x-auto scroll-smooth w-full">   
+    <div class='flex gap-2 p-2'>
+        {% for subcategory in subcategory %}
+        <a href="{% url 'product:subcategory_filter' subcategory.slug %}" >
+            <div class="border-2 flex-shrink-0 hover:border-yellow-500 shadow-sm rounded-full w-28 h-28 overflow-hidden ">
+                <div class="flex justify-center mt-2">
+                    <img class='h-14 w-14' src="{{subcategory.thumbnail.url}}" />
+                </div>
+                <div class="text-xs font-normal font-sans flex justify-center items-center">
+                    {{subcategory.name|truncatechars:15}}
+                </div>
+            </div>
+        </a>
+        {% empty %}
+        <div class='font-semibold my-20 items-center flex pl-4 justify-center'>
+            <div class="text border-2 rounded-lg px-2 p-1 bg-white text-xs justify-center">
+                NO [{{subcategory.name}}] AVAILABLE
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>   
+{% endblock %} 

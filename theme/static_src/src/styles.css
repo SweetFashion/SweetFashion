@@ -1,0 +1,331 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+   
+}
+
+
+ /* USED BUTTONS */
+.product-text{
+    @apply text-base px-1 break-words leading-normal font-semibold line-clamp-3 text-start text-cyan-600 hover:text-red-500
+}
+.product-discount{
+    @apply bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 rounded text-white px-2 p-0.5 mr-1 text-xs font-medium flex justify-center items-center
+}
+.empty-price{
+    @apply bg-gradient-to-r from-emerald-500 via-green-500 to-green-600 rounded text-white p-1
+}
+  
+.product-sellprice{
+    @apply font-semibold text-lg px-1 flex flex-nowrap text-red-600;
+}
+ 
+/* USED DETAILS */
+  
+.view{
+    @apply pl-2 hover:underline hover:text-orange-500 cursor-pointer text-sm text-cyan-600 font-sans font-medium;
+}
+ 
+ /* USED BUTTONS */
+.btn{
+    @apply text-white text-sm font-semibold px-2 p-0.5 bg-gradient-to-r from-yellow-700 via-yellow-500 to-yellow-600 hover:text-white hover:bg-gradient-to-l hover:from-yellow-700 hover:via-yellow-500 hover:to-yellow-600 ;
+}
+
+.continent{
+    @apply rounded-md cursor-default text-center text-white text-sm font-semibold px-2 p-0.5 bg-gradient-to-r  from-green-700 via-emerald-500 to-green-600 hover:text-white hover:bg-gradient-to-l hover:from-green-700 hover:via-emerald-500 hover:to-green-600 ;
+}
+  
+/* USED HEADER */ 
+.text{
+    @apply bg-slate-900 font-semibold text-yellow-600 hover:no-underline;
+}
+.hovertext{
+    @apply hover:text-yellow-500 hover:no-underline items-center cursor-pointer;
+}  
+.bgdark{
+    @apply bg-gradient-to-l from-gray-950 via-slate-900 to-zinc-950;
+}
+   
+.catname{
+    @apply text-slate-900 font-sans cursor-pointer text-center font-semibold text-sm  bg-gradient-to-r rounded-none from-yellow-700 via-yellow-500 to-yellow-600 hover:text-white hover:bg-gradient-to-l hover:from-yellow-700 hover:via-yellow-500 hover:to-yellow-600 ;
+}
+
+
+
+
+/* USED Details Columns */  
+ 
+.detail-base{
+    @apply grid grid-cols-2 items-center border-y border-slate-300;
+}
+.detail-main-title{
+    @apply font-sans font-semibold text-xl p-2;
+} 
+.detail-title{
+    @apply px-2 py-2 font-bold font-sans text-base text-black bg-slate-100 ;
+}
+.detail-content{
+    @apply px-2 py-2 text-slate-600 text-base;
+}
+/* USED About Columns */  
+.about-content{
+    @apply break-words text-justify font-sans text-base font-medium;
+}
+/* USED Description Columns */
+
+.description-main-title{
+    @apply  font-sans font-bold text-base p-2;
+}
+.description-content{
+    @apply  border-slate-300 p-2 break-words font-medium text-sm font-sans cursor-default;
+}
+.description-box{
+    @apply  border-y border-slate-300;
+}
+/* USED Warranty Columns */
+.warranty-text{
+    @apply border-y border-slate-300 p-2 break-words font-semibold font-sans cursor-default;
+}
+/* USED Link Title */
+.link-title{
+    @apply text-xs flex justify-center text-center px-2 pb-2 break-words;
+}
+/* USED Social Share*/
+
+.fb{
+    @apply w-full text-center px-2 p-0.5 rounded text-white bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-700;
+}
+.tw{
+    @apply w-full text-center px-2 p-0.5 rounded text-white bg-gradient-to-r from-slate-700 to-slate-600 hover:from-slate-600 hover:to-slate-700;
+}
+.pt{
+    @apply w-full text-center px-2 p-0.5 rounded text-white bg-red-600;
+}
+.cy{
+    @apply w-full text-center px-2 p-0.5 rounded bg-slate-300;
+}
+
+ 
+
+/* USED Product Info*/
+
+.freeship{
+    @apply bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white px-2 p-0.5 text-xs text-center flex justify-center items-center font-medium;
+}
+
+.sale{
+    @apply w-10 h-10 animate-bounce items-center flex justify-center text-balance font-sans  bg-gradient-to-r from-red-700  via-red-500 to-red-700 absolute top-0 right-0 text-white rounded-full text-xs font-medium shadow-md;
+}
+
+
+
+.headline{
+    @apply font-bold py-1 pl-4 text-lg;
+}
+
+
+
+
+
+
+
+.ribbon {
+    position: absolute;
+    left: -5px; top: -5px;
+    z-index: 1;
+    overflow: hidden;
+    width: 75px; height: 75px;
+    text-align: right;
+  }
+  .ribbon span {
+    font-size: 10px;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    width: 100px;
+    display: block;
+    background: #79A70A;
+    background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 19px; left: -21px;
+  }
+  .ribbon span::before {
+    content: "";
+    position: absolute; left: 0px; top: 100%;
+    z-index: -1;
+    border-left: 3px solid #79A70A;
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #79A70A;
+  }
+  .ribbon span::after {
+    content: "";
+    position: absolute; right: 0px; top: 100%;
+    z-index: -1;
+    border-left: 3px solid transparent;
+    border-right: 3px solid #79A70A;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #79A70A;
+  }
+
+ 
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+   
+  
+
+
+
+  .animatedribbon1 {
+    width: 150px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    background: #3D79D0;
+    -webkit-animation: main 250ms;
+    -moz-animation: main 250ms;
+    -ms-animation: main 250ms;
+    animation: main 250ms;
+  }
+
+  .animatedribbon2 {
+    width: 150px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    background: #FF0000;
+    -webkit-animation: main 250ms;
+    -moz-animation: main 250ms;
+    -ms-animation: main 250ms;
+    animation: main 250ms;
+  }
+
+ 
+  .animatedribbon i {
+    position: absolute;
+  }
+  
+  .animatedribbon i:first-child, .animatedribbon i:nth-child(2) {
+    position: absolute;
+    left: -9px;
+    bottom: -10px;
+    z-index: -1;
+    border: 10px solid transparent;
+    border-right-color: #043140;
+    -webkit-animation: edge 500ms;
+    -moz-animation: edge 500ms;
+    -ms-animation: edge 500ms;
+    animation: edge 500ms;
+  }
+  
+  .animatedribbon i:nth-child(2) {
+    left: auto;
+    right: -9px;
+    border-right-color: transparent;
+    border-left-color: #043140;
+  }
+  
+  .animatedribbon i:nth-child(3), .animatedribbon i:last-child {
+    width: 10px;
+    left: -20px;
+    z-index: -2;
+    border: 10px solid #1D53C0;
+    border-left-color: transparent;
+    -webkit-animation: back 600ms;
+    -moz-animation: back 600ms;
+    -ms-animation: back 600ms;
+    animation: back 600ms;
+    -webkit-transform-origin: 100% 0;
+    -moz-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+  }
+  
+  .animatedribbon i:last-child {
+    left: auto;
+    right: -20px;
+    border: 10px solid #1D53C0;
+    border-right-color: transparent;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+  }
+   
+  /* animations */
+  
+  @-webkit-keyframes main {
+    0% { -webkit-transform: scaleX(0); }
+    100% { -webkit-transform: scaleX(1); }
+  }
+  
+  @-webkit-keyframes edge {
+    0%, 50% { -webkit-transform: scaleY(0); }
+    100% { -webkit-transform: scaleY(1); }
+  }
+  
+  @-webkit-keyframes back {
+    0%, 75% { -webkit-transform: scaleX(0); }
+    100% { -webkit-transform: scaleX(1); }
+  }
+  
+  
+  @-moz-keyframes main {
+    0% { -moz-transform: scaleX(0); }
+    100% { -moz-transform: scaleX(1); }
+  }
+  
+  @-moz-keyframes edge {
+    0%, 50% { -moz-transform: scaleY(0); }
+    100% { -moz-transform: scaleY(1); }
+  }
+  
+  @-moz-keyframes back {
+    0%, 75% { -moz-transform: scaleX(0); }
+    100% { -moz-transform: scaleX(1); }
+  }
+  
+  
+  @keyframes main {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+  }
+  
+  @keyframes edge {
+    0%, 50% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+  }
+  
+  @keyframes back {
+    0%, 75% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+  }
